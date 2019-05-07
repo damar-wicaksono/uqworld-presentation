@@ -1,0 +1,108 @@
+%% Informations générales
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{bsttechdoc}[2011/11/01]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%                GENERAL (1/2)                  %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ------------------------------%
+%%%% Chargement des packages %%%%
+% ------------------------------% 
+
+% Police et langue
+\usepackage[english,french]{babel}              % Pour adopter les règles de typographie française
+\usepackage[latin1]{inputenc}                   % Support de accentuation des lettres
+\usepackage[T1]{fontenc}
+\usepackage{rawfonts}                           % pour avoir plus de fonts
+
+% couleur et images
+\usepackage{color}                              % pour imprimer des rapports en couleur
+\usepackage{graphicx}                           % pour insÃ©rer des images en une ligne
+\usepackage{colortbl}				% pour colorer des cellules dans un tableau
+
+% mise en page
+\usepackage{makeidx}                            % pour faire des indexs
+\usepackage{natbib}                             % Bibliographie en mode citations auteurs-date
+\usepackage{subfigure}                          % Gestion des figures
+
+\usepackage{ifthen}
+\usepackage{rotate}
+
+% ----------------------------%
+%%%% Définition des marges %%%%
+% ----------------------------%
+
+\setlength{\textheight}{220mm}           % Hauteur de la zone de texte
+\setlength{\textwidth}{160mm}            % Largeur de la zone de texte
+\setlength{\topmargin}{-5mm}             % Pas de marge en haut
+\setlength{\oddsidemargin}{2mm}          % Marge gauche sur pages impaires
+\headsep 15 pt
+
+% ------------------------------------------%
+%%%% Mise en forme des liens hypertextes %%%%
+% ------------------------------------------%
+\usepackage{hyperref}                           % Liens hypertextes dans sommaire, pages, etc.
+\hypersetup{
+  backref=true,                           % Permet d'ajouter des liens dans
+  pagebackref=true,                       % les bibliographies
+  hyperindex=true,                        % Ajoute des liens dans les index.
+  colorlinks=true,                        % Colorise les liens.
+  breaklinks=true,                        % Permet le retour Ã  la ligne dans les liens trop longs.
+  urlcolor= blue,                         % Couleur des hyperliens.
+  linkcolor= blue,                        % Couleur des liens internes.
+  bookmarks=true,                         % Crée des signets pour Acrobat.
+  bookmarksopen=true                      % Si les signets Acrobat sont créés, les afficher complètement.
+%  pdftitle={Mon document au format TeX}   % Titre du document.
+%  pdfauthor={PoluX},                      % Informations apparaissant dans dans les informations 
+%  pdfsubject={Projet wikiBooks}           % du documentsous Acrobat.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%                  TETE ET PIED                 %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+
+
+% --------- Definition de variables -------------------
+
+% RefDocument
+\gdef\@RefDocument{}
+\gdef\RefDocument#1{\gdef\@RefDocument{#1}}
+
+% Titre
+\gdef\@TitleReport{}
+\gdef\TitleReport#1{\gdef\@TitleReport{#1}}
+
+% Date
+\gdef\@Date{}
+\gdef\Date#1{\gdef\@Date{#1}}
+
+% Keywords
+\gdef\@Keywords{}
+\gdef\Keywords#1{\gdef\@Keywords{#1}}
+
+
+% --------- Mise en Page -------------------------------
+
+% tête
+\newcommand\entete{
+  \lhead{\@TitleReport}
+  \chead{}
+  \rhead{}	
+}
+
+% pied de page
+\newcommand\pieddepage{
+ \lfoot{\@Date}
+ \cfoot{}
+% \rfoot{-- \thepage~/~\pageref{end} -- }
+\rfoot{\thepage}
+ \thispagestyle{empty}
+ \pagestyle{fancyplain}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Fin du package
+\endinput

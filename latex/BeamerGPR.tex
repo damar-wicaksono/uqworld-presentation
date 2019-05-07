@@ -1,0 +1,349 @@
+\documentclass[]{rsuqbeamernew}
+
+
+\title[Notes on GPR]{Notes on Gaussian Process Regression (GPR)}
+
+\author[D. Wicaksono]{Damar Wicaksono}
+\institute[RSUQ, ETH Z\"urich]{Chair of Risk, Safety and Uncertainty 
+Quantification -- ETH Z\"urich}
+
+\date[28.03.2019]
+
+\graphicspath{{Figures/}}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{pifont}
+%\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+
+%% Note: the title page will be created automatically
+
+
+
+\begin{document}
+
+
+%===============================================================================
+\begin{frame}{Outline}
+
+
+\tableofcontents
+
+\end{frame}
+%===============================================================================
+
+\section{UQLab Users}
+
+%===============================================================================
+\begin{frame}{UQLab users}
+
+Ideas for our UQ community are initiated
+from our understanding of the \emph{natural} audience, \textbf{UQLab users}: 
+
+\begin{itemize}
+  \item Since its public release in 2015, UQLab users has almost reached 2'000 users from 77 countries,
+  with over 60 unique active users per day and up to 130 weekly.
+  \item We ask users to register, but beyond users affiliation,
+  we don't know much about them or how they are using UQLab\footnote{Which are not the point of registration. For the actual reasons on why registration is required, see Stefano's blog on \emph{Why do we ask you to register to get UQLab? Why does the "core" folder contain obscured files?}}.
+\end{itemize}
+
+How can we know more of our audience up to the present?
+    
+\end{frame}
+%===============================================================================
+
+%===============================================================================
+\begin{frame}{UQLab users: A glimpse from support emails}
+  
+  Many are about registration, license, and installations:
+  \begin{itemize}
+    \item From:$\blacksquare@\blacksquare$.fr, Subject: Loose the licence file
+    \begin{quotation}
+     I'm PhD candidate and I want to use your UQlab toolbox but I loose my licence email and I can't find it on my computer.
+    \end{quotation}
+  \item From:$\blacksquare@\blacksquare$.com, Subject: Registration, captcha
+  \begin{quotation}
+  Trying to register for downloading UQLab, I always fail to find the captcha. Could you please check it? I'd be surprised to find out that I am a bot :)
+\end{quotation}
+\item From:$\blacksquare.\blacksquare@\blacksquare$.edu, Subject: problem while installing uqlab
+\begin{quotation}
+  i have problems installing on MATLAB 2010b, the version 2014a seems to work ok. i just want to let you know about that. 
+\end{quotation}
+\end{itemize}
+\end{frame}
+%===============================================================================
+
+%===============================================================================
+\begin{frame}{UQLab users: A glimpse from support emails}
+  
+  Some are technical questions about UQLab:
+  \begin{itemize}
+    \item From:$\blacksquare@\blacksquare$.edu.au, Subject: sequential design strategy
+    \begin{quotation}
+      However I was wondering if there is a way to set up sequential design strategy in UQlab. 
+    \end{quotation}
+    \item From: many, Subject: Problem with running UQlab
+    \begin{quotation}
+      I am running this piece of code:
+      ....
+      and am seeing this error message:
+      ....
+      I was wondering if you had any suggestions to resolving this problem.
+    \end{quotation}
+  \end{itemize}
+
+  Some are technical questions about UQ in practice (and in context):
+  \begin{itemize}
+      \item From:$\blacksquare@\blacksquare$.ch, Subject: Best case and worst case during uncertainity quantification
+      \begin{quotation}
+      Lately our group is trying to use Monte Carlo approach to quantify uncertainty in our estimation of human optimum walking performance. Particularly, we require some knowledge on defining the best and worst case scenarios. Can you guide us ? 
+    \end{quotation}
+  \end{itemize}
+
+
+\end{frame}
+%===============================================================================
+
+%===============================================================================
+\begin{frame}{UQLab users: A glimpse from support emails}
+
+Some are nice,
+\begin{itemize}
+  \item From: david.$\blacksquare@\blacksquare$.de, Subject: Citing UQLab
+  \begin{quotation}
+    As I won't have the chance to employ it in my work, \textbf{I would like to include it in my literature section to raise awareness for students after me}. Unfortunately, I couldn't find how to cite UQLab. Any recommendations?
+  \end{quotation}
+  \item From: $\blacksquare@\blacksquare$.pt, Subject: credits in publications
+  \begin{quotation}
+    I haven't started to use UQlab yet but at a glance let me tell you that it seems a very nice job!
+  \end{quotation}
+\end{itemize}
+
+Some can be nicer...
+\begin{itemize}
+  \item From:$\blacksquare@\blacksquare$.com, Subject: CV as a parameter estimation method
+  \begin{quotation}
+    Hey, 
+    I would like to ask where I can find more explanation about how cross validation is used in estimating parameters of kriging models. The manuel didn't help much. 
+  \end{quotation}
+  \item From:$\blacksquare@\blacksquare$.edu, Subject: Unregister
+  \begin{quotation}
+    Kindly cancel my registration!
+    
+    Thank you!
+  \end{quotation}
+\end{itemize}
+
+\end{frame}
+%===============================================================================
+
+%===============================================================================
+\begin{frame}[t]{UQLab users: A glimpse from external citations}
+
+\begin{columns}
+    \column{0.5\textwidth}
+  \begin{minipage}[c][0.30\textheight][c]{\linewidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.8\linewidth]{../figures/cit_stat}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}[c][0.6\textheight][c]{\linewidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.75\linewidth]{../figures/uqlab_citations}
+    \end{figure}
+  \end{minipage}
+
+  \column{0.5\textwidth}
+    \begin{itemize}
+    \item Between 2016--2019, about 83 papers are published in which UQLab is used as an analysis tool.
+    \item \emph{Engineering applications} is the majority.
+  \end{itemize}
+  \begin{minipage}{\linewidth}
+    \begin{tabularx}{\textwidth}{Xc}
+      \hline
+      \scriptsize{Fields of Applications} & \footnotesize{Number of Citations} \\
+      \hline
+      \footnotesize{Electrical} & 19  \\
+      \footnotesize{Civil} & 11 \\
+      \footnotesize{Chemical} & 7 \\
+      \footnotesize{Mechanical} & 6 \\
+      \footnotesize{Remote sensing} & 5 \\
+      \footnotesize{Nuclear} & 5 \\
+      \footnotesize{Ocean} & 4 \\
+      \footnotesize{Energy} & 1 \\
+      \hline
+    \end{tabularx}
+  \end{minipage}%
+  \hfill
+\end{columns}
+
+\end{frame}
+%===============================================================================
+
+%===============================================================================
+\begin{frame}[t]{UQLab users: Some can be very productive}
+  
+Some authors are able to produce multiple papers using UQLab as part of their analysis.
+For example:
+
+  \begin{thebibliography}{Dijkstra, 1982}
+    \footnotesize{
+    \bibitem[Xie and Schenkendorf, 2019]{Xie2019}
+    Xiangzhong Xie and Ren\'e Schenkendorf
+    \newblock Stochastic back-off-based robust process design for continuous crystallization of ibuprofen, {\em Computers and Chemical Engineering}, vol. 124, 2019.
+    
+    \bibitem[Xie et al., 2018]{Xie2018}
+    Xiangzhong Xie, R\"udiger Ohs, A. C. Spiess, Ulrike Krewer, and Ren\'e Schenkendorf,
+    \newblock Moment-independent sensitivity analysis of enzyme-catalyzed reactions with correlated model parameters, {\em IFAC-PapersOnLine}, vol. 51, 2018.
+    
+    \bibitem[Emenike, 2017]{Emenike2018}
+    V. N. Emenike, Xiangzhong Xie, Ren\'e Schenkendorf, A. C. Spiess, and Ulrike Krewer,
+    \newblock Robust dynamic optimization of enzyme-catalized carboligation: a point estimate-based back-off approach, {\em Computers and Chemical Engineering}, 2018.
+  
+    \bibitem[Schenkendorf et al., 2017]{Schenkendorf2017}
+    Ren\'e Schenkendorf, Xiangzhong Xie, and Ulrike Krewer
+    \newblock An efficient polynomial chaos expansion strategy for active fault identification of chemical processes, {\em Computer Aided Chemical Engineering}, 2017.
+
+    \bibitem[Xie et al., 2017]{Xie2017}
+    Xiangzhong Xie, Ren\'e Schenkendorf, and Ulrike Krewer,
+    \newblock Robust design of chemical processes based on a one-shot sparse polynomial chaos expansion concept, {\em Computer Aided Chemical Engineering}, 2017.}
+  \end{thebibliography}
+% Note that there are other cases
+\end{frame}
+%===============================================================================
+
+\section{Ideas for an Online Community}
+
+%===============================================================================
+\begin{frame}[t]{Ideas for an Online Community}
+
+\end{frame}
+%===============================================================================
+
+\section{Tools for an Online Community}
+
+\section{UQWorld}
+
+%===============================================================================
+\begin{frame}[t]{Introducing UQWorld}
+  
+  \begin{columns}
+    \column{0.35\textwidth}
+    \begin{minipage}[c][0.85\textheight][c]{\linewidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=1.0\linewidth]{../figures/uqworld_logo.png}
+      \end{figure}
+    \end{minipage}
+      
+    \column{0.65\textwidth}
+    \begin{itemize}
+      \item Between 2016--2019, about 83 papers are published in which UQLab is used as an analysis tool.
+      \item already live at \texttt{uqworld.org}
+    \end{itemize}
+    \hfill
+  \end{columns}
+
+\end{frame}
+%===============================================================================
+
+%===============================================================================
+\begin{frame}[t]{UQWorld: Structure and organization}
+  
+\texttt{UQWorld} is organized into three main categories:
+\begin{columns}
+  \column{0.3\textwidth}
+  \begin{figure}
+    \includegraphics[width=0.70\textwidth]{../figures/all-about-uq_512}
+    \caption*{All About UQ}
+  \end{figure}
+  
+  \column{0.3\textwidth}
+  \begin{figure}
+    \includegraphics[width=0.65\textwidth]{../figures/uq-resources_512}
+    \caption*{UQ Resources}
+  \end{figure}
+  
+  \column{0.3\textwidth}
+  \begin{figure}
+    \includegraphics[width=0.6\textwidth]{../figures/uq_with_uqlab_512}
+    \caption*{UQ with UQLab}
+  \end{figure}
+\end{columns}
+
+\begin{itemize}
+  \item \emph{All About UQ} contains the free UQ discussion forum and the Chair's published post (\textbf{UQ-centered} space).
+  \item \emph{UQ Resources} contains news, updates, case studies, and other resources from UQ community at large (\textbf{UQ-centered} space).
+  \item \emph{UQ with UQLab} is the corner for UQLab users, a place to get help with UQLab, as well as updates from the Developer Team (\textbf{UQLab-centered} space).
+\end{itemize}
+
+\end{frame}
+%===============================================================================
+
+%===============================================================================
+\begin{frame}[t]{UQWorld: An Applied UQ Community}
+  
+The largest chunk of space in \texttt{UQWorld} caters to UQ practitioners---from the uninitiated to skilled---regardless the software tool they are using:
+
+\begin{itemize}
+  \item \emph{UQ Discussion Forum}: A lightly-moderated forum to ask, discuss, and share (Examples: Introduce projects and UQ methods applied, )
+  \item \emph{Chair's Blog} (Example: Bruno's posts on \emph{Getting started with UQ} and \emph{How to define my probabilistic input distributions?}).
+  \item \emph{News and Announcements} (Example: Paul's post on the calibration of heat transfer model).
+  \item \emph{Case studies} (Example: Paul's post on the calibration of heat transfer model).
+  \item \emph{News and Announcements} (Example: Paul's post on the calibration of heat transfer model).
+\end{itemize}
+
+\end{frame}
+%===============================================================================
+
+%===============================================================================
+\begin{frame}[t]{UQWorld: The UQLab User Community}
+  
+\texttt{UQWorld} is the definitive UQLab user community:
+
+\end{frame}
+%===============================================================================
+
+%===============================================================================
+\begin{frame}[t]{UQWorld: Structure and organization}
+
+Member write access to categories within \texttt{UQWorld} is controlled;
+In some categories, members can't start their own topic.
+This is how the Chair maintains the \emph{editorial content} of \texttt{UQWorld}.
+
+\begin{tabularx}{\textwidth}{Xccc}
+  \hline
+  Sub-categories                            & Public     & RSUQ       &  RSUQ-Prime\\
+  \hline
+  \footnotesize{Chair's Blog}               & \ding{55}  & \ding{55}  & \checkmark \\
+  \footnotesize{FAQ}                        & \ding{55}  & \ding{55}  & \checkmark \\
+  \footnotesize{Developers Corner}          & \ding{55}  & PA         & \checkmark \\
+  \footnotesize{Future/Draft}               & \ding{55}  & \checkmark & \checkmark \\
+  \footnotesize{News and Announcements}     & \ding{55}  & \checkmark & \checkmark \\
+  \footnotesize{Benchmarks}                 & PA         & \checkmark & \checkmark \\
+  \footnotesize{Case Studies}               & \checkmark & \checkmark & \checkmark \\
+  \footnotesize{Community Q\&A and How To}  & \checkmark & \checkmark & \checkmark \\   
+  \footnotesize{Features Requests}          & \checkmark & \checkmark & \checkmark \\
+  \footnotesize{UQWorld Community (Meta)}   & \checkmark & \checkmark & \checkmark \\
+  \footnotesize{UQ Discussion Forum}        & \checkmark & \checkmark & \checkmark \\
+  \hline
+\end{tabularx}
+
+
+\end{frame}
+%===============================================================================
+
+\section{Demo}
+
+\section{What's next}
+
+%===============================================================================
+\begin{frame}[t]{UQWorld: What's next}
+  
+  
+\end{frame}
+%===============================================================================
+
+\end{document}

@@ -1,0 +1,100 @@
+\documentclass[a4paper,11pt]{article}              %  final version
+
+\usepackage{graphics}
+\usepackage{fancyhdr}
+\usepackage{amssymb,amsfonts,amsmath,amsthm}
+\usepackage{natbib}
+\usepackage{bstnotations}
+\usepackage[margin=30mm]{geometry}
+%\geometry{left=2cm,right=2cm,top=3cm,bottom=3cm}
+
+
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{subfigure}
+
+\usepackage{authblk}
+\renewcommand\Affilfont{\itshape\small}	
+
+
+\newcommand{\revcomment}[1]{
+  \begin{quotation}
+    {\small
+   \noindent   \textbf{Comment:}
+   \em #1
+    }    
+  \end{quotation}
+}
+
+\newcommand{\reply}[1]
+{
+ \noindent   \textbf{Reply:}
+#1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                  DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\title{Reply to reviewers\\
+	journal\_paper\_ID\\
+	\textbf{title}} 
+
+\author[1]{A. Author} \author[1]{B. Author}
+
+\affil[1]{Chair of Risk, Safety and Uncertainty Quantification, ETH
+  Zurich, Stefano-Franscini-Platz 5, 8093 Zurich, Switzerland}
+
+\date{}
+\maketitle
+
+
+The authors would like to thank the reviewers for their thorough reading
+of the manuscript and their constructive comments. Corrections have been
+made accordingly and are highlighted in red in the revised version of
+the paper.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Reply to reviewer \# 1}
+%	\revcomment{The papers fails to cite some published papers that used
+%	  enhanced Kriging methods for RBDO. The authors should do better
+%	  literature survey.}
+%	
+%	\reply{In the revised version of the paper, some recent references have
+%	  been added such as ...}
+
+\revcomment{Cut/paste from the review each comment}
+
+\reply{when writing a rebuttal, follow the golden rule ``always agree
+  with the reviewer (to the largest possible extent), and change as
+  little as possible in the paper.''}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Reply to reviewer \# 2}
+\revcomment{The papers fails to cite some published papers that used
+  enhanced Kriging methods for RBDO. The authors should do better
+  literature survey.}
+
+\reply{In the revised version of the paper, some recent references have
+  been added such as ...}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Reply to editor}
+If anything to be added in this section 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%% ADDITIONAL REFERENCES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% References with bibTeX database:
+% e.g.
+\nocite{SudretHDR}
+
+\renewcommand{\refname}{Additional references}
+\small
+\bibliographystyle{chicago}
+\bibliography{biblioRSUQ}
+\end{document}

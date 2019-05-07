@@ -1,0 +1,163 @@
+%% Informations générales
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{ethminutes}[2013/21/01]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%                GENERAL (1/2)                  %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ------------------------------%
+%%%% Chargement des packages %%%%
+% ------------------------------% 
+
+% Police et langue
+\usepackage[english]{babel}              % Pour adopter les règles de typographie française
+\usepackage[latin1]{inputenc}                   % Support de accentuation des lettres
+\usepackage[T1]{fontenc}
+\usepackage{rawfonts}                           % pour avoir plus de fonts
+\usepackage{eurosym}
+%\usepackage{charter}
+%\usepackage[charter]{mathdesign}
+
+
+% couleur, images, dessin
+\usepackage{xcolor}                              % pour imprimer des rapports en couleur
+\usepackage{graphicx}                           % pour insÃ©rer des images en une ligne
+\usepackage{colortbl}				% pour colorer des cellules dans un tableau
+\usepackage{tikz}
+
+% mise en page
+
+\usepackage{natbib}                             % Bibliographie en mode citations auteurs-date
+\usepackage{subfigure}                          % Gestion des figures
+
+\usepackage{ifthen}
+\usepackage{rotate}
+
+%\usepackage{enumitem}
+
+
+
+% ----------------------------%
+%%%% Définition des marges %%%%
+% ----------------------------%
+
+\setlength{\headheight}{15mm}            % Hauteur de la zone de texte
+\setlength{\textheight}{230mm}           % Hauteur de la zone de texte
+\setlength{\textwidth}{160mm}            % Largeur de la zone de texte
+\setlength{\topmargin}{-15mm}             % Pas de marge en haut
+\setlength{\oddsidemargin}{0mm}          % Marge gauche sur pages impaires
+\headsep 8 pt
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1 pt}
+
+\usepackage{hyperref}                           % Liens hypertextes dans
+% sommaire, pages, etc.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Nice tables
+\usepackage{booktabs}
+\usepackage{tabularx}     
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcommand{\lratio}[1]{\setlength{\hsize}{#1\hsize}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%                  TETE ET PIED                 %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+% --------- Definition de variables -------------------
+% RefDocument
+\gdef\@RefDocument{}
+\gdef\RefDocument#1{\gdef\@RefDocument{#1}}
+
+% Redacteur
+\gdef\@Redacteur{}
+\gdef\Redacteur#1{\gdef\@Redacteur{#1}}
+
+% Titre
+\gdef\@TitleReport{}
+\gdef\TitleReport#1{\gdef\@TitleReport{#1}}
+
+% Date
+\gdef\@Date{}
+\gdef\Date#1{\gdef\@Date{#1}}
+
+% LieuReunion
+\gdef\@LieuReunion{}
+\gdef\LieuReunion#1{\gdef\@LieuReunion{#1}}
+
+% Date diffusion
+\gdef\@DateDiffusion{}
+\gdef\DateDiffusion#1{\gdef\@DateDiffusion{#1}}
+
+% Destinataires
+\gdef\@Destinataires{}
+\gdef\Destinataires#1{\gdef\@Destinataires{#1}}
+
+% Keywords
+\gdef\@Keywords{}
+\gdef\Keywords#1{\gdef\@Keywords{#1}}
+
+
+% --------- Mise en Page -------------------------------
+\makeatletter
+% En-tête
+\newcommand\entete{
+  \lhead{\includegraphics[height=8mm]{Logo-ETH.jpg}}
+  \chead{}
+  \rhead{\@RefDocument}	
+}
+
+% Pied de page
+\newcommand\pieddepage{
+ \lfoot{\@Date}
+ \cfoot{}
+ \rfoot{-- \thepage~/~\pageref{end} -- }
+ \pagestyle{fancyplain}
+}
+
+
+\renewcommand{\familydefault}{\sfdefault}
+
+%----------- Page de garde -----------------------------
+\newcommand\PageDeGarde
+{
+  \begin{tabularx}{\textwidth}{>{\lratio{0.5}\raggedright\arraybackslash}Y
+      >{\lratio{0.5}\raggedleft\arraybackslash}Y}
+%  
+  \includegraphics[height=10mm]{Logo-ETH.jpg} &
+  \begin{minipage}[c]{0.49\linewidth} \small 
+    ETH Z\"urich \\
+    Institute of Structural Engineering (IBK)\\
+    Chair of Risk, Safety \& Uncertainty Quantification \\
+    Stefano-Franscini-Platz 5 -- CH-8093 Z\"urich\\
+    Tel.: +41 44 633 66 69 -- Fax: +41 44 633 14 22 
+  \end{minipage}  
+\end{tabularx}
+  
+  \begin{table}[!ht]
+    \centering
+    \begin{tabularx}{\textwidth}{>{\lratio{0.3}\raggedleft\arraybackslash}Y
+        >{\lratio{0.7}\raggedright\arraybackslash}Y}\toprule 
+      {\bf Reference:} & \@RefDocument      \\
+      {\bf Meeting date:} & \@Date \\
+      {\bf Meeting location:} & \@LieuReunion \\
+      {\bf Author(s):} & \@Redacteur \\
+      {\bf Object:} & \@TitleReport  \\[1em]\toprule 
+      % {\bf Date:} & \@DateDiffusion  \\
+      {\bf Addressee(s):} & \@Destinataires  \\\bottomrule 
+    \end{tabularx}
+  \end{table}
+  \thispagestyle{empty}
+}
+
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Fin du package
+\endinput

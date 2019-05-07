@@ -1,0 +1,38 @@
+\documentclass{rsuqposterA0}
+
+\author{Ann Author}
+\title{A0 Poster template}
+
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{lipsum}
+
+\usepackage{tcolorbox}
+\definecolor{mycolor}{rgb}{0.122, 0.435, 0.698}
+
+\newmdenv[innerlinewidth=1pt, roundcorner=1cm,linecolor=mycolor,innerleftmargin=.5cm,
+innerrightmargin=.5cm,innertopmargin=6pt,innerbottommargin=6pt]{mybox}
+
+
+\begin{document}
+{	\VERYHuge
+some content
+}
+
+\colorbox{rsuqlightblue}{
+	\begin{minipage}[t][13cm][c]{20cm}
+		even bigger
+	\end{minipage}
+}\hfill
+\colorbox{ETH1}{
+	\parbox[t][13cm][c]{35cm}{
+		this is funny
+	}
+}
+\begin{tcolorbox}[colback=white!5!white,colframe=blue!75!black,title=My nice heading]
+\parbox{.3\textwidth}{	This is another \textbf{tcolorbox}}
+\end{tcolorbox}
+
+
+% finally put the footer at the end of the document
+\rsuqfooter{}
+\end{document}

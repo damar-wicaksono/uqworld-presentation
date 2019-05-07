@@ -1,19 +1,21 @@
 \documentclass[]{rsuqbeamernew}
 
 
-\title[Notes on GPR]{Notes on Gaussian Process Regression (GPR)}
+\title[UQWorld]{UQWorld: an Applied UQ Community}
 
 \author[D. Wicaksono]{Damar Wicaksono}
 \institute[RSUQ, ETH Z\"urich]{Chair of Risk, Safety and Uncertainty 
 Quantification -- ETH Z\"urich}
 
-\date[28.03.2019]
+\date[09.05.2019]
 
 \graphicspath{{Figures/}}
 \usepackage{caption}
 \usepackage{listings}
 \usepackage{tikz}
 \usepackage{pifont}
+\usepackage{booktabs}% http://ctan.org/pkg/booktabs
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
 %\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
 
 %% Note: the title page will be created automatically
@@ -22,10 +24,8 @@ Quantification -- ETH Z\"urich}
 
 \begin{document}
 
-
 %===============================================================================
 \begin{frame}{Outline}
-
 
 \tableofcontents
 
@@ -35,16 +35,19 @@ Quantification -- ETH Z\"urich}
 \section{UQLab Users}
 
 %===============================================================================
-\begin{frame}{UQLab users}
+\begin{frame}{Background}
 
-Ideas for our UQ community are initiated
-from our understanding of the \emph{natural} audience, \textbf{UQLab users}: 
+We tried to get some ideas for our UQ community based on
+our understanding of the \emph{natural} audience, i.e., \textbf{UQLab users}: 
 
 \begin{itemize}
   \item Since its public release in 2015, UQLab users has almost reached 2'000 users from 77 countries,
   with over 60 unique active users per day and up to 130 weekly.
   \item We ask users to register, but beyond users affiliation,
-  we don't know much about them or how they are using UQLab\footnote{Which are not the point of registration. For the actual reasons on why registration is required, see Stefano's blog on \emph{Why do we ask you to register to get UQLab? Why does the "core" folder contain obscured files?}}.
+  we don't know much about them or how they are using UQLab\footnote{Which are not the point of registration.
+  For the actual reasons on why registration is required,
+  see Stefano's blog on \emph{Why do we ask you to register to get UQLab? Why does the "core" folder contain obscured files?}
+  in \texttt{UQWorld}}.
 \end{itemize}
 
 How can we know more of our audience up to the present?
@@ -54,22 +57,28 @@ How can we know more of our audience up to the present?
 
 %===============================================================================
 \begin{frame}{UQLab users: A glimpse from support emails}
-  
-  Many are about registration, license, and installations:
-  \begin{itemize}
-    \item From:$\blacksquare@\blacksquare$.fr, Subject: Loose the licence file
-    \begin{quotation}
-     I'm PhD candidate and I want to use your UQlab toolbox but I loose my licence email and I can't find it on my computer.
-    \end{quotation}
+
+Many are about registration, installations, and license:
+
+\begin{itemize}
   \item From:$\blacksquare@\blacksquare$.com, Subject: Registration, captcha
-  \begin{quotation}
-  Trying to register for downloading UQLab, I always fail to find the captcha. Could you please check it? I'd be surprised to find out that I am a bot :)
-\end{quotation}
-\item From:$\blacksquare.\blacksquare@\blacksquare$.edu, Subject: problem while installing uqlab
-\begin{quotation}
-  i have problems installing on MATLAB 2010b, the version 2014a seems to work ok. i just want to let you know about that. 
-\end{quotation}
+    \begin{quotation}
+      Trying to register for downloading UQLab, I always fail to find the captcha.
+      Could you please check it? I'd be surprised to find out that I am a bot :)
+    \end{quotation}
+  
+  \item From:$\blacksquare.\blacksquare@\blacksquare$.edu, Subject: problem while installing uqlab
+    \begin{quotation}
+      i have problems installing on MATLAB 2010b, the version 2014a seems to work ok. i just want to let you know about that. 
+    \end{quotation}
+
+  \item From:$\blacksquare@\blacksquare$.fr, Subject: Loose the licence file
+    \begin{quotation}
+      I'm PhD candidate and I want to use your UQlab toolbox but I loose my licence email and I can't find it on my computer.
+    \end{quotation}
+    
 \end{itemize}
+
 \end{frame}
 %===============================================================================
 
@@ -96,7 +105,9 @@ How can we know more of our audience up to the present?
   \begin{itemize}
       \item From:$\blacksquare@\blacksquare$.ch, Subject: Best case and worst case during uncertainity quantification
       \begin{quotation}
-      Lately our group is trying to use Monte Carlo approach to quantify uncertainty in our estimation of human optimum walking performance. Particularly, we require some knowledge on defining the best and worst case scenarios. Can you guide us ? 
+      Lately our group is trying to use Monte Carlo approach to quantify uncertainty in our estimation of human optimum walking performance.
+      Particularly, we require some knowledge on defining the best and worst case scenarios.
+      Can you guide us ? 
     \end{quotation}
   \end{itemize}
 
@@ -109,28 +120,42 @@ How can we know more of our audience up to the present?
 
 Some are nice,
 \begin{itemize}
-  \item From: david.$\blacksquare@\blacksquare$.de, Subject: Citing UQLab
+  \item From: $\blacksquare@\blacksquare$.de, Subject: Citing UQLab
   \begin{quotation}
-    As I won't have the chance to employ it in my work, \textbf{I would like to include it in my literature section to raise awareness for students after me}. Unfortunately, I couldn't find how to cite UQLab. Any recommendations?
+    As I won't have the chance to employ it in my work, \textbf{I would like to include it in my literature section to raise awareness for students after me}.
+    Unfortunately, I couldn't find how to cite UQLab. Any recommendations?
   \end{quotation}
   \item From: $\blacksquare@\blacksquare$.pt, Subject: credits in publications
   \begin{quotation}
-    I haven't started to use UQlab yet but at a glance let me tell you that it seems a very nice job!
+    I haven't started to use UQlab yet but at a glance \textbf{let me tell you that it seems a very nice job!}
   \end{quotation}
 \end{itemize}
 
 Some can be nicer...
 \begin{itemize}
-  \item From:$\blacksquare@\blacksquare$.com, Subject: CV as a parameter estimation method
-  \begin{quotation}
-    Hey, 
-    I would like to ask where I can find more explanation about how cross validation is used in estimating parameters of kriging models. The manuel didn't help much. 
-  \end{quotation}
   \item From:$\blacksquare@\blacksquare$.edu, Subject: Unregister
   \begin{quotation}
     Kindly cancel my registration!
     
     Thank you!
+  \end{quotation}
+\end{itemize}
+
+\end{frame}
+%===============================================================================
+
+%===============================================================================
+\begin{frame}{UQLab users: A glimpse from support emails}
+
+Some are (downright) hard to read,
+\begin{itemize}
+  \item From: $\blacksquare@\blacksquare$.edu.cn, Subject: Matlab code by Dr. Moustapha w.r.t. the fascinating Quantile-based RBDO
+  \begin{quotation}
+    Good dinner Dr. Moustapha \\
+    Your catchy Quantile-based RBDO bring up new ideas for our RBDO world.
+    If Dr. Moustapha is going to need allies or assistants for your idea to gain momentum, sincere hope for good cooperation (fans) between us (of yours) \texttt{\textasciitilde.\textasciitilde}!
+    Actually, me is a current Master student w.r.t. Reliabil \& Syst Engn.
+    If I make the decision to embark on a PhD, your QB-RBDO is really fascinating for me.(Wow! Such a productve and effective methodology for practical applications.That's terrific!)
   \end{quotation}
 \end{itemize}
 
@@ -219,11 +244,97 @@ For example:
 %===============================================================================
 \begin{frame}[t]{Ideas for an Online Community}
 
+Many user online communities started as support communities, but if \emph{only} for that:
+\begin{itemize}
+  \item it'll be too restrictive % If UQ is somehow already a niche, then UQLab users would even be smaller bunch of audience
+  \item it's not very aspiring
+\end{itemize}
+\\~\\
+Widening the scope to applied UQ makes sense as there's potential audience wider than UQLab users.
+\\~\\
+Besides, there seems to be an opportunity...
+\\~\\
+\end{frame}
+%===============================================================================
+
+%===============================================================================
+\begin{frame}[t]{Other UQ Online Communities}
+
+\begin{columns}
+  \column{0.5\textwidth}
+  \begin{figure}
+    \includegraphics[width=0.70\textwidth]{../figures/dakota}
+  \end{figure}
+  
+  \column{0.5\textwidth}
+  \begin{figure}
+    \includegraphics[width=0.45\textwidth]{../figures/openTurns}
+  \end{figure}
+\end{columns}
+
+\begin{itemize}
+  \item Dakota maintains mailing lists,
+        but this is 2019\footnote{not that mailing list has become obsolete, but it definitely has its downsides for a community}.
+  \item OpenTurns maintains a blog, but not maintained.
+  \item Otherwise, zero relevant results from Google search
+        for ``uncertainty quantification community'' or ``uncertainty quantification forum''.
+\end{itemize}
+
+\end{frame}
+%===============================================================================
+
+%===============================================================================
+\begin{frame}[t]{Ideas for an Online Community}
+
+\begin{tabularx}{\textwidth}{XX}
+  \hline
+  Questions                            & Answers \\
+  \hline
+  \emph{What will the community be about?}               & About UQ and UQLab-related topics \\
+  \emph{Who is the community for?}                       & UQ practitioners, researchers, and UQLab users \\
+  
+  \emph{What is the purpose or goal of the community? What UQLab community strive for?}
+  & \tabitem Be a place to discuss about, share, learn, and get help in topics related to UQ, from beginners to advanced \\
+  & \tabitem Be the definitive community-powered home for UQLab support and best practices \\
+  
+  \emph{What will happen in the community?}          & Selection of various contents (editorial and user-generated), free form discussion, knowledge base \\
+  
+
+  \hline
+\end{tabularx}
+
+\end{frame}
+%===============================================================================
+
+%===============================================================================
+\begin{frame}[t]{Ideas for an Online Community}
+
 \end{frame}
 %===============================================================================
 
 \section{Tools for an Online Community}
 
+\begin{frame}[t]{Tools for an Online Community}
+
+  \begin{columns}
+    \column{0.50\textwidth}
+    \begin{minipage}[c][0.80\textheight][c]{\linewidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=1.0\linewidth]{../figures/communityPlatform}
+      \end{figure}
+    \end{minipage}
+      
+    \column{0.50\textwidth}
+  \begin{itemize}
+    \item Between 2016--2019, about 83 papers are published in which UQLab is used as an analysis tool.
+    \item already live at \texttt{uqworld.org}
+  \end{itemize}
+  \hfill
+ \end{columns}
+
+\end{frame}
+  
 \section{UQWorld}
 
 %===============================================================================
@@ -285,7 +396,7 @@ For example:
 %===============================================================================
 \begin{frame}[t]{UQWorld: An Applied UQ Community}
   
-The largest chunk of space in \texttt{UQWorld} caters to UQ practitioners---from the uninitiated to skilled---regardless the software tool they are using:
+The largest chunk of space in \texttt{UQWorld} caters to UQ practitioners---from the uninitiated to experts---regardless the software tool they are using:
 
 \begin{itemize}
   \item \emph{UQ Discussion Forum}: A lightly-moderated forum to ask, discuss, and share (Examples: Introduce projects and UQ methods applied, )
